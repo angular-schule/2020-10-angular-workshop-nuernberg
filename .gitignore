@@ -1,3 +1,5 @@
 /typescript-playground/node_modules/
 /typescript-playground/hello-typescript/**/*.js
 /typescript-playground/hello-typescript/**/*.map
+/typescript-playground/hello-typescript/node_modules/
+node_modules
