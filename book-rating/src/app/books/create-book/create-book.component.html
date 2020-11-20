@@ -1,0 +1,24 @@
+<form [formGroup]="bookForm">
+
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <input formControlName="isbn" type="text" id="isbn" class="form-control">
+
+    <br-error-display [control]="isbn">
+      Bitte geben Sie eine gültige ISBN an.
+    </br-error-display>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input formControlName="title" type="text" id="title" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Beschreibung</label>
+    <textarea formControlName="description" id="description" class="form-control"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-4">Erzeuge</button>
+
+</form>
