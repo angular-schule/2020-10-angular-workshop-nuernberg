@@ -1,6 +1,8 @@
 <p>dashboard works!</p>
 
 <br-book
-  *ngFor="let b of books"
+  *ngFor="let b of books; index as i"
   [book]="b"
 ></br-book>
+
+<h1>books.length: {{books.length}}</h1>

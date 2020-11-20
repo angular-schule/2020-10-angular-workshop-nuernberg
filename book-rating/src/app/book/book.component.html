@@ -4,7 +4,12 @@
 
     <div class="card-title">
       <h2>{{book.title}}
-        <span class="badge badge-secondary">{{book.rating}}</span>
+
+        <span class="badge badge-secondary" >
+          <ng-container *ngFor="let r repeat book.rating">
+            ✨
+          </ng-container>
+        </span>
       </h2>
     </div>
 
@@ -17,7 +22,7 @@
     2. prinzipien immutability ignoriert
     -->
     <button (click)="book.rating = book.rating - 1" class="btn btn-primary mr-2">-</button>
-    <button (click)="book.rating = book.rating + 1"  class="btn btn-primary">+</button>
+    <button (click)="book.rating = book.rating + 1" class="btn btn-primary">+</button>
 
 
   </div>
