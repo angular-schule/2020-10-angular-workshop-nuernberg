@@ -29,6 +29,7 @@ export class CreateBookComponent {
       rating: 1
     } as Book;
 
+
     // 1. Erzeuge ein Event mit dem Namen "create"
     // 2. emite das Event mit den neuen Book
     // 3. subscribe dich auf das Event
