@@ -1,3 +1,3 @@
-<div *ngIf="isInvalid()" class="feedback-error">
+<div *ngIf="isInvalid$ | async" class="feedback-error">
   <ng-content></ng-content>
 </div>
