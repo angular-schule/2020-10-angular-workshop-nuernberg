@@ -8,6 +8,8 @@ import { NgForRepeatDirective } from './shared/ng-for-repeat.directive';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorDisplayComponent } from './error-display/error-display.component';
+import { BooksSharedModule } from 'books-shared';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { ErrorDisplayComponent } from './error-display/error-display.component';
   imports: [
     CommonModule,
     BooksRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BooksSharedModule
   ],
   exports: [
     DashboardComponent

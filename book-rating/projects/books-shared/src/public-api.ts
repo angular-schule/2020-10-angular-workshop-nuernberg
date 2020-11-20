@@ -3,5 +3,5 @@
  */
 
 export * from './lib/books-shared.service';
-export * from './lib/books-shared.component';
+export * from './lib/book.component';
 export * from './lib/books-shared.module';

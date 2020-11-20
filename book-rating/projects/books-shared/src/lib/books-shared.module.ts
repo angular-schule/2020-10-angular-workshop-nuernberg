@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BooksSharedComponent } from './books-shared.component';
-
-
+import { BookComponent } from './book.component';
 
 @NgModule({
-  declarations: [BooksSharedComponent],
-  imports: [
-  ],
-  exports: [BooksSharedComponent]
+  declarations: [BookComponent],
+  imports: [],
+  exports: [BookComponent]
 })
 export class BooksSharedModule { }

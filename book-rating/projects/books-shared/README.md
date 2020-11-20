@@ -13,7 +13,7 @@ Run `ng build books-shared` to build the project. The build artifacts will be st
 
 ## Publishing
 
-After building your library with `ng build books-shared`, go to the dist folder `cd dist/books-shared` and run `npm publish`.
+After building your library with `ng build books-shared --prod`, go to the dist folder `cd dist/books-shared` and run `npm publish`.
 
 ## Running unit tests
 
