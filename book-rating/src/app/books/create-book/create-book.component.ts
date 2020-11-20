@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Book } from '../shared/book';
 
@@ -14,6 +14,8 @@ export class CreateBookComponent {
     Validators.required,
     Validators.minLength(3)
   ]);
+
+  @Output() create = new EventEmitter<Book>();
 
   bookForm = new FormGroup({
     isbn: this.isbn,
@@ -31,6 +33,8 @@ export class CreateBookComponent {
     // 2. emite das Event mit den neuen Book
     // 3. subscribe dich auf das Event
     // 4. Füge das Buch dem Array hinzu
+
+    this.create.emit(newBook);
 
     this.bookForm.reset();
   }
