@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 import { map, startWith, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'rxw-fromevent',
   templateUrl: './fromevent.component.html',
 })
-export class FromeventComponent implements OnInit {
+export class FromeventComponent {
 
-  currentWidth = 0;
+  currentWidth = fromEvent(window, 'resize').pipe(
+    map(_ => window.innerWidth),
+    debounceTime(1000),
+    startWith(window.innerWidth)
+  );
 
-  ngOnInit() {
+
 
     /**
      *  Schreibe die jeweils aktuelle Fensterbreite in das Property this.currentWidth
@@ -21,10 +25,5 @@ export class FromeventComponent implements OnInit {
      */
 
     /******************************/
-
-    // HIER, an dieser Stelle, kannst du loslegen!
-
-    /******************************/
-  }
 
 }
