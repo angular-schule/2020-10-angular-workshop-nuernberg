@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, ReplaySubject, merge, concat, race, forkJoin } from 'rxjs';
+import { Subject, ReplaySubject, merge, concat, race, forkJoin, EMPTY } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -36,7 +36,7 @@ export class ChatComponent implements OnInit {
 
     /************************/
 
-     EMPTY.subscribe({                                   
+     EMPTY.subscribe({
       next: msg => this.log(msg),
       error: err => this.log('ERROR: ' + err),
       complete: () => this.log('All members left')
