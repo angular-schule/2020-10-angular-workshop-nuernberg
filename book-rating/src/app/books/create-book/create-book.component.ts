@@ -31,8 +31,8 @@ export class CreateBookComponent {
 
 
     // 1. Erzeuge ein Event mit dem Namen "create"
-    // 2. emite das Event mit den neuen Book
-    // 3. subscribe dich auf das Event
+    // 2. Emitiere das Event mit den neuen Book
+    // 3. Subscribe dich auf das Event
     // 4. Füge das Buch dem Array hinzu
 
     this.create.emit(newBook);

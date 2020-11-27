@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from './book';
 
+// Eine Lib kann keine html.Datei haben. Stattdessen muss der
+// HTML als String angegeben werden.
+
 @Component({
   selector: 'lib-book',
   template: `<div class="card mb-4">
@@ -12,6 +15,7 @@ import { Book } from './book';
     </div>
 
     <p>
+      <label>__from book.component.ts__</label>
       {{book.description}} .........
     </p>
 
