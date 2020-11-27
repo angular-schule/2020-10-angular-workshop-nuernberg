@@ -9,6 +9,7 @@ import { CreateBookComponent } from './create-book/create-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorDisplayComponent } from './error-display/error-display.component';
 import { BooksSharedModule } from 'books-shared';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 
 
@@ -18,7 +19,8 @@ import { BooksSharedModule } from 'books-shared';
     BookComponent,
     NgForRepeatDirective,
     CreateBookComponent,
-    ErrorDisplayComponent
+    ErrorDisplayComponent,
+    BookDetailsComponent
 
   ],
   imports: [
