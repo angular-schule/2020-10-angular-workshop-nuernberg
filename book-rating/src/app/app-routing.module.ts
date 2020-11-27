@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
+  // nur mit pathMatch: 'full'
   { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: 'books', loadChildren: () => import('./books/books.module').then(m => m.BooksModule) },
   { path: '**', redirectTo: 'books' }
