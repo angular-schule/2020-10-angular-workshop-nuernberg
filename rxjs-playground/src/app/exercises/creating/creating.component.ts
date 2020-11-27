@@ -23,7 +23,15 @@ export class CreatingComponent implements OnInit {
 
     /******************************/
 
-    // HIER, an dieser Stelle, kannst du loslegen!
+    // (AB)|
+    // of('😃', '😎')
+    timer(0, 500)
+    .subscribe(
+      x => this.log(x),
+      err => this.log('ERROR ' + err),
+      () => this.log('COMPLETE')
+    );
+
 
     /******************************/
   }
