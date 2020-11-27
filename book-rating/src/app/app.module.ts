@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BooksModule,
+    // BooksModule, // removed because of lazy loading
     HttpClientModule,
     // AppRoutingEndModule
   ],
