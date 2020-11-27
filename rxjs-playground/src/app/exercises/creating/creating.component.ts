@@ -23,14 +23,28 @@ export class CreatingComponent implements OnInit {
 
     /******************************/
 
+    const observer = {
+      next: x => this.log(x),
+      error: err => this.log('ERROR ' + err),
+      complete: () => this.log('COMPLETE')
+    };
+
+    const observable = new Observable(subscriber => {
+      subscriber.next('😃');
+      subscriber.error('TOD!');
+      subscriber.next('😉');
+      subscriber.next('🎉');
+
+    });
+
     // (AB)|
     // of('😃', '😎')
-    timer(0, 500)
-    .subscribe(
-      x => this.log(x),
-      err => this.log('ERROR ' + err),
-      () => this.log('COMPLETE')
-    );
+    // timer(0, 500)
+    observable
+      .subscribe(observer);
+
+    // observable
+    //   .subscribe(console.log);
 
 
     /******************************/
