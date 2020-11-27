@@ -6,3 +6,9 @@
 
   <br-dashboard></br-dashboard>
 </div>
+
+<div [ngClass]="{ row: showRow }">
+  TEST
+</div>
+
+<button (click)="showRow = !showRow">Toggle</button>

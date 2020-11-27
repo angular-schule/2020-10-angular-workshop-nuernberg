@@ -21,6 +21,6 @@ import { BooksModule } from './books/books.module';
     BooksModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

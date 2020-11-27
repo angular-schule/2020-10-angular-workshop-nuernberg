@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'br-root',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'book-rating';
+
+  constructor() {
+    console.log(environment.apiUrl);
+  }
+
+  showRow = false;
 }
