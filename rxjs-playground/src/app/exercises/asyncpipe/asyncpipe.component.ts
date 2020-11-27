@@ -9,7 +9,7 @@ import { tap, scan } from 'rxjs/operators';
 })
 export class AsyncpipeComponent implements OnInit {
 
-  result: number;
+
   result$: Observable<number>;
 
   ngOnInit() {
@@ -20,13 +20,13 @@ export class AsyncpipeComponent implements OnInit {
 
     /************************/
 
-     timer(0, 700).pipe(                        
+     this.result$ = timer(0, 700).pipe(
       scan((acc, item) => acc + item, 0),
       tap({
         next: e => console.log(e),
         complete: () => console.log('Complete')
       }),
-     ).subscribe(e => this.result = e);         
+     );
 
     /************************/
   }
