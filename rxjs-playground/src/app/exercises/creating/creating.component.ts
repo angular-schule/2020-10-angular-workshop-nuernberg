@@ -31,17 +31,24 @@ export class CreatingComponent implements OnInit {
 
     const observable = new Observable(subscriber => {
       subscriber.next('😃');
-      subscriber.error('TOD!');
-      subscriber.next('😉');
-      subscriber.next('🎉');
 
+      // subscriber.error('TOD!');
+      const x = setTimeout(() => { console.log('ich lebe noch!'); subscriber.next('😉')}, 1000);
+      const y = setTimeout(() => subscriber.next('🎉'), 2000);
+
+      return () => {
+        clearTimeout(x);
+        clearTimeout(y);
+      };
     });
 
     // (AB)|
     // of('😃', '😎')
     // timer(0, 500)
-    observable
+    const subscription = observable
       .subscribe(observer);
+
+    subscription.unsubscribe();
 
     // observable
     //   .subscribe(console.log);
