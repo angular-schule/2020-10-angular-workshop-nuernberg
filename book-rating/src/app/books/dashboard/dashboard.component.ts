@@ -7,8 +7,8 @@ import { BookStoreService } from '../shared/book-store.service';
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  // VORSICHT: später Bug sobald wir Ajax einführen
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // AsyncPipe einsetzen!
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.bs.getBooks().subscribe(books => this.books = books);
 
     // setTimeout(() => this.books = [], 3000);
   }

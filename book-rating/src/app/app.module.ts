@@ -7,6 +7,7 @@ import { BooksModule } from './books/books.module';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 // import { BookComponent } from './book/book.component';
 // import { NgForRepeatDirective } from './shared/ng-for-repeat.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BooksModule } from './books/books.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BooksModule
+    BooksModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
