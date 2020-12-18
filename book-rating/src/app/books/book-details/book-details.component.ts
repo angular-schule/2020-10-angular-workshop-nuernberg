@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EMPTY, of } from 'rxjs';
-import { catchError, map, mergeMap, retry, share, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, retry, share, shareReplay, startWith, switchMap } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
@@ -39,10 +39,10 @@ export class BookDetailsComponent implements OnInit {
         title: 'Fehler: ' + e.message,
         description: '',
         rating: 1
-      }))
+      })),
+      startWith(undefined)
       // catchError(() => EMPTY)
-    )),
-    shareReplay(1)
+    ))
   )
 
   constructor(private route: ActivatedRoute,
