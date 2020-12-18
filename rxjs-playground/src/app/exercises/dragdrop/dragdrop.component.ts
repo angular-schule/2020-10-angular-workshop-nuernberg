@@ -2,6 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
 import { concatMap, map, mergeMap, startWith, takeUntil, filter } from 'rxjs/operators';
 
+export interface Position {
+  x: number;
+  y: number;
+}
+
 @Component({
   selector: 'rxw-dragdrop',
   templateUrl: './dragdrop.component.html',
@@ -9,8 +14,8 @@ import { concatMap, map, mergeMap, startWith, takeUntil, filter } from 'rxjs/ope
 })
 export class DragdropComponent implements OnInit {
 
-  targetPosition$: Observable<number[]>;
-  //targetPosition = [50, 50];
+  targetPosition$: Observable<Position>;
+
   @ViewChild('target', { static: true }) target;
 
   ngOnInit() {
@@ -33,8 +38,11 @@ export class DragdropComponent implements OnInit {
     const offset = 50;
     this.targetPosition$ = mouseDown$.pipe(
       mergeMap(() => mouseMove$.pipe(takeUntil(mouseUp$))),
-      map(e => [e.pageX - offset, e.pageY - offset]),
-      startWith([100, 100])
+      map(e => ({
+        x: e.pageX - offset,
+        y: e.pageY - offset
+      }))
+      // startWith([500, 500])
     );
 
     /******************************/

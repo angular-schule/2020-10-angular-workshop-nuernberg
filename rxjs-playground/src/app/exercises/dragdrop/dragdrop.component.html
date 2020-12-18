@@ -2,14 +2,14 @@
 
 {{ targetPosition$ | async | json}}<br>
 
-<strong>X =</strong> {{ (targetPosition$ | async)[0] }}<br>
-<strong>Y =</strong> {{ (targetPosition$ | async)[1] }}<br>
+<strong>X =</strong> {{ (targetPosition$ | async)?.x }}<br>
+<strong>Y =</strong> {{ (targetPosition$ | async)?.y }}<br>
 
 
 <div id="target" #target
 
-[style.top.px]="(targetPosition$ | async)[1]"
-[style.left.px]="(targetPosition$ | async)[0]"
+[style.top.px]="(targetPosition$ | async)?.y"
+[style.left.px]="(targetPosition$ | async)?.x"
 
   >
 </div>
