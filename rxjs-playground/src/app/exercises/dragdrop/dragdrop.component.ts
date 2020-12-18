@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
-import { concatMap, map, mergeMap, startWith, takeUntil, filter } from 'rxjs/operators';
+import { concatMap, map, mergeMap, startWith, takeUntil, filter, tap } from 'rxjs/operators';
 
 export interface Position {
   x: number;
@@ -35,18 +35,22 @@ export class DragdropComponent implements OnInit {
 
     /******************************/
 
-    const offset = 50;
+    // TODO! :-D
     this.targetPosition$ = mouseDown$.pipe(
-      mergeMap(() => mouseMove$.pipe(takeUntil(mouseUp$))),
-      map(e => ({
-        x: e.pageX - offset,
-        y: e.pageY - offset
-      }))
+      tap(eDown => console.log(eDown)),
+      mergeMap(eDown => mouseMove$.pipe(
+        takeUntil(mouseUp$),
+        map(e => ({
+          x: e.pageX - (eDown.target as HTMLElement).offsetTop,
+          y: e.pageY - (eDown.target as HTMLElement).offsetLeft
+        }))
+      )),
+
       // startWith([500, 500])
     );
 
     /******************************/
   }
-
+// offsetLeft, offsetTop
 
 }

@@ -16,13 +16,7 @@ export class ErrorHandlingComponent {
 
   start() {
     this.es.randomError().pipe(
-
-      /******************************/
-
-      // HIER, an dieser Stelle, kannst du loslegen!
-
-      /******************************/
-
+      catchError(err => of('Fehler gefangen!'))
     ).subscribe({
       next: value => this.logStream$.next(value),
       error: err => this.logStream$.next('💥 ERROR: ' + err)
