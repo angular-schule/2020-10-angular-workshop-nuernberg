@@ -4,6 +4,8 @@
 <p *ngIf="showDetails">
   Details:
   {{ (book$ | async)?.description }}
+
+  <br>{{test$ | async }}
 </p>
 
 <button

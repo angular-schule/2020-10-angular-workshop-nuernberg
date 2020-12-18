@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EMPTY, of } from 'rxjs';
-import { catchError, map, mergeMap, share, switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, retry, share, shareReplay, switchMap } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
@@ -28,10 +28,12 @@ export class BookDetailsComponent implements OnInit {
 
   // .pipe(share())
 
+  test$ = this.route.paramMap.pipe(map(params => params.get('isbn')));
 
   book$ = this.route.paramMap.pipe(
     map(params => params.get('isbn')),
     switchMap(isbn => this.bs.getSingleBook(isbn).pipe(
+      retry(3), // mega cool!
       catchError((e: HttpErrorResponse) => of({
         isbn: '000',
         title: 'Fehler: ' + e.message,
@@ -40,7 +42,7 @@ export class BookDetailsComponent implements OnInit {
       }))
       // catchError(() => EMPTY)
     )),
-    share()
+    shareReplay(1)
   )
 
   constructor(private route: ActivatedRoute,
