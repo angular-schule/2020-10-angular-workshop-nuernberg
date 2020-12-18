@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { map, mergeMap } from 'rxjs/operators';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-book-details',
@@ -8,13 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookDetailsComponent implements OnInit {
 
-  isbn: string;
+  book$ = this.route.paramMap.pipe(
+    map(params => params.get('isbn')),
+    mergeMap(isbn => this.bs.getSingleBook(isbn))
+  )
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+    private bs: BookStoreService) { }
 
   ngOnInit(): void {
-    this.route.paramMap
-      .subscribe(paramMap => this.isbn = paramMap.get('isbn'));
+      // .subscribe(paramMap => this.isbn = paramMap.get('isbn'));
   }
 
 }
