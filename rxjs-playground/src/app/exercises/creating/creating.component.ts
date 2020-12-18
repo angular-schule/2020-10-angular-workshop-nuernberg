@@ -33,7 +33,7 @@ export class CreatingComponent implements OnInit {
       subscriber.next('😃');
 
       // subscriber.error('TOD!');
-      const x = setTimeout(() => { console.log('ich lebe noch!'); subscriber.next('😉')}, 1000);
+      const x = setTimeout(() => { console.log('ich lebe noch!'); subscriber.next('😉'); }, 1000);
       const y = setTimeout(() => subscriber.next('🎉'), 2000);
 
       return () => {
@@ -48,7 +48,7 @@ export class CreatingComponent implements OnInit {
     const subscription = observable
       .subscribe(observer);
 
-    subscription.unsubscribe();
+    // subscription.unsubscribe();
 
     // observable
     //   .subscribe(console.log);

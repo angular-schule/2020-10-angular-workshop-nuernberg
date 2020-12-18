@@ -14,7 +14,9 @@ export class BookComponent {
   @Output() rateUp = new EventEmitter<Book>();
   @Output() rateDown = new EventEmitter<Book>();
 
+
   doRateUp(): void {
+
     // this.rateUp.subscribe(console.log);
     this.rateUp.next(this.book);
   }
