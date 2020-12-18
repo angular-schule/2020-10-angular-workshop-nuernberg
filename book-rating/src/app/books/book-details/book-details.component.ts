@@ -12,6 +12,7 @@ import { BookStoreService } from '../shared/book-store.service';
 })
 export class BookDetailsComponent implements OnInit {
 
+  showDetails = false;
 
   // book2$ = this.route.paramMap
 

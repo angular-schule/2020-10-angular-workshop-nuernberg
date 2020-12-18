@@ -1,6 +1,16 @@
 <h2>{{ (book$ | async)?.title }}</h2>
-<p>{{ (book$ | async)?.description }}</p>
+<h5>{{ (book$ | async)?.isbn }}</h5>
 
+<p *ngIf="showDetails">
+  Details:
+  {{ (book$ | async)?.description }}
+</p>
+
+<button
+  (click)="showDetails = !showDetails"
+  class="btn btn-primary">Toggle Details</button>
+
+<hr>
 
 <a routerLink="/books/9783864904523">Gehe zu Git (9783864904523)</a><br>
 <a routerLink="/books/boom">Gehe zu 404</a>
