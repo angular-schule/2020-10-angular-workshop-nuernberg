@@ -1,9 +1,19 @@
-<strong>X =</strong> {{ targetPosition[0] }}<br>
-<strong>Y =</strong> {{ targetPosition[1] }}<br>
+
+
+{{ targetPosition$ | async | json}}<br>
+
+<strong>X =</strong> {{ (targetPosition$ | async)[0] }}<br>
+<strong>Y =</strong> {{ (targetPosition$ | async)[1] }}<br>
+
 
 <div id="target" #target
-  [style.top.px]="targetPosition[1]"
-  [style.left.px]="targetPosition[0]"></div>
+
+[style.top.px]="(targetPosition$ | async)[1]"
+[style.left.px]="(targetPosition$ | async)[0]"
+
+  >
+</div>
+
 
 <hr>
 
