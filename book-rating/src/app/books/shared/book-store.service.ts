@@ -22,7 +22,7 @@ export class BookStoreService {
 
   getSingleBook(isbn: string): Observable<Book> {
     return this.http.get<Book>(environment.apiUrl + 'books/' + isbn).pipe(
-      delay(getRandomInt(5000))
+      delay(getRandomInt(2000))
     )
   }
 }
