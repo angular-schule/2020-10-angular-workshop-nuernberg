@@ -10,6 +10,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorDisplayComponent } from './error-display/error-display.component';
 import { BooksSharedModule } from 'books-shared';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromBook from './store/book.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { BookEffects } from './store/book.effects';
 
 
 
@@ -27,7 +31,9 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     CommonModule,
     BooksRoutingModule,
     ReactiveFormsModule,
-    BooksSharedModule
+    BooksSharedModule,
+    StoreModule.forFeature(fromBook.bookFeatureKey, fromBook.reducer),
+    EffectsModule.forFeature([BookEffects])
   ],
   exports: [
     DashboardComponent
