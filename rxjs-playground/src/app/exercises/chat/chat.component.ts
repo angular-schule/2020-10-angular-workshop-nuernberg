@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, ReplaySubject, merge, concat, race, forkJoin, EMPTY } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Subject, ReplaySubject, merge, concat, race, forkJoin, EMPTY, ObservableInput, Observable, ObservedValuesFromArray, of } from 'rxjs';
+import { defaultIfEmpty, map } from 'rxjs/operators';
+
+export const forkJoinDefault = <A extends ObservableInput<any>[]>(sources: A):
+  Observable<ObservedValuesFromArray<A>[]> => forkJoin(sources)
+    .pipe(defaultIfEmpty([]));
 
 @Component({
   selector: 'rxw-chat',
@@ -31,12 +35,16 @@ export class ChatComponent implements OnInit {
      * - merge (Turn multiple observables into a single observable.)
      * - concat (Emit values from source 1, when complete, subscribe to source 2...)
      * - race (The observable to emit first is used.)
-     * - forkJoin (When all observables complete, emit the last emitted value from each.)
+     * - forkJoin (When all observables complete, emit the last emitted value from each.)  !! voll wichtig! :-)
      */
 
     /************************/
 
-     EMPTY.subscribe({
+    forkJoin([
+       this.msg.julia$,
+       this.msg.georg$,
+       this.msg.john$]
+     ).subscribe({
       next: msg => this.log(msg),
       error: err => this.log('ERROR: ' + err),
       complete: () => this.log('All members left')

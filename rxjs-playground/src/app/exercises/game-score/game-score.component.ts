@@ -23,13 +23,19 @@ export class GameScoreComponent implements OnInit {
 
     /******************************/
 
-    // HIER, an dieser Stelle, kannst du loslegen!
+    this.score$.pipe(
+      scan((acc, item) => acc + item, 0)
+    ).subscribe(score => this.currentScore = score);
+
+    this.score$.pipe(
+      reduce((acc, item) => acc + item, 0)
+    ).subscribe(score => this.finalScore = score)
 
     /******************************/
 
     this.score$.subscribe({
       next: value => this.logStream$.next(value),
-      complete: () => this.logStream$.next('❌ COMPLETED')
+      complete: () => this.logStream$.next('COMPLETED')
     });
   }
 

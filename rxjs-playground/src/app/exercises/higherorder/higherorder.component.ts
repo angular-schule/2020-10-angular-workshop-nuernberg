@@ -30,16 +30,13 @@ export class HigherorderComponent implements OnInit {
     /************************/
 
     this.result$ = this.source$.pipe(
-      // please try out:
-      // - mergeMap
-      // - concatMap
-      // - switchMap
-      // - exhaustMap
+      concatMap(e => this.es.echo(e))
+
     );
 
     /************************/
 
-    this.source$.subscribe(value => this.logStream$.next(`SOURCE: ${value}`));
+    // this.source$.subscribe(value => this.logStream$.next(`SOURCE: ${value}`));
     this.result$.subscribe(value => this.logStream$.next(`🚀 ${value}`));
   }
 
