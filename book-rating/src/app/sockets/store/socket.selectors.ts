@@ -9,3 +9,13 @@ export const selectFiles = createSelector(
   selectSocketsState,
   x => x.files
 );
+
+export const selectLoggedIn = createSelector(
+  selectSocketsState,
+  x => x.loggedIn
+);
+
+export const selectLogonErrorMessage = createSelector(
+  selectSocketsState,
+  x => x.logonErrorMessage
+);

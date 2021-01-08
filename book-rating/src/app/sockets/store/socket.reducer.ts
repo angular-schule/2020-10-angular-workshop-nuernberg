@@ -12,11 +12,15 @@ export interface FileInfo {
 }
 
 export interface State {
-  files: FileInfo[]
+  files: FileInfo[],
+  loggedIn: boolean;
+  logonErrorMessage: string;
 }
 
 export const initialState: State = {
-  files: []
+  files: [],
+  loggedIn: false,
+  logonErrorMessage: ''
 };
 
 
@@ -30,6 +34,18 @@ export const reducer = createReducer(
   })),
 
   // on(SocketsActions.loadSocketsFailure, (state, action) => state),
+
+  on(SocketsActions.logonSuccess, (state) => ({
+    ... state,
+    loggedIn: true,
+    logonErrorMessage: ''
+  })),
+
+  on(SocketsActions.logonFailure, (state, { payload }) => ({
+    ... state,
+    loggedIn: false,
+    logonErrorMessage: payload
+  })),
 
 );
 

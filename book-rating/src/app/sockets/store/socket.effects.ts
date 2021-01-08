@@ -32,6 +32,19 @@ export class SocketsEffects {
     );
   }, { dispatch: false });
 
+
+  logon$ = createEffect(() => {
+    return this.actions$.pipe(
+
+      ofType(SocketsActions.logon),
+      map(({ name, password }) => this.connection.sendMessage({
+        service: 'logon',
+        payload: JSON.stringify({ name, password })
+      }))
+    );
+  }, { dispatch: false });
+
+
   handleMessage$ = createEffect(() => {
     return this.connection.messages
   });
