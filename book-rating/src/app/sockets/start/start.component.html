@@ -34,3 +34,6 @@
   class="alert alert-danger">
   {{ message }}
 </div>
+
+
+<div *ngIf="logonInProgress$ | async">Bitte warten...</div>

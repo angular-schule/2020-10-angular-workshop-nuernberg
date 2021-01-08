@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { getFiles, logon } from '../store/socket.actions';
-import { selectFiles, selectLoggedIn, selectLogonErrorMessage } from '../store/socket.selectors';
+import { selectFiles, selectLoggedIn, selectLogonErrorMessage, selectLogonInProgress } from '../store/socket.selectors';
 
 @Component({
   selector: 'br-start',
@@ -15,13 +15,15 @@ export class StartComponent {
   files$ = this.store.pipe(select(selectFiles));
   loggedIn$ = this.store.pipe(select(selectLoggedIn));
   logonErrorMessage$ = this.store.pipe(select(selectLogonErrorMessage));
+  logonInProgress$ = this.store.pipe(select(selectLogonInProgress));
 
   myForm = new FormGroup({
     name: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+  }
 
   getFiles() {
     this.store.dispatch(getFiles());

@@ -49,6 +49,5 @@ export class SocketsEffects {
     return this.connection.messages
   });
 
-  constructor(private actions$: Actions, private connection: ConnectionService) {}
-
+  constructor(private actions$: Actions, private connection: ConnectionService) { }
 }

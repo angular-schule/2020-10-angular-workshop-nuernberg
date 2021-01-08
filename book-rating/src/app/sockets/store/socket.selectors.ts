@@ -10,6 +10,11 @@ export const selectFiles = createSelector(
   x => x.files
 );
 
+export const selectLogonInProgress = createSelector(
+  selectSocketsState,
+  x => x.logonInProgress
+);
+
 export const selectLoggedIn = createSelector(
   selectSocketsState,
   x => x.loggedIn
