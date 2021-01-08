@@ -38,9 +38,9 @@ export class BookDetailsComponent implements OnInit {
         isbn: '000',
         title: 'Fehler: ' + e.message,
         description: '',
-        rating: 1
+        rating: 1 
       })),
-      startWith(undefined)
+      startWith(false)
       // catchError(() => EMPTY)
     ))
   )
