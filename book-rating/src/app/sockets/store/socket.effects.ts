@@ -28,14 +28,12 @@ export class SocketsEffects {
             sort: 'name'
           }
         })
-      })),
-      concatMap(() =>
-
-        this.connection.messages.pipe(
-          ofType(SocketsActions.getFilesSuccess, SocketsActions.getFilesFailure)
-        )
-      )
+      }))
     );
+  }, { dispatch: false });
+
+  handleMessage$ = createEffect(() => {
+    return this.connection.messages
   });
 
   constructor(private actions$: Actions, private connection: ConnectionService) {}
