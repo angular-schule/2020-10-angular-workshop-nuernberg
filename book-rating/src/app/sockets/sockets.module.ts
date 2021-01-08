@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromSockets from './store/socket.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { SocketsEffects } from './store/socket.effects';
+import { ConnectionService } from './connection.service';
 
 
 @NgModule({
@@ -18,4 +19,9 @@ import { SocketsEffects } from './store/socket.effects';
     EffectsModule.forFeature([SocketsEffects])
   ]
 })
-export class SocketsModule { }
+export class SocketsModule {
+
+  constructor(connection: ConnectionService) {
+    connection.connect();
+  }
+}

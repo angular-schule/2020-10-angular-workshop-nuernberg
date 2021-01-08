@@ -4,6 +4,8 @@ import { catchError, map, concatMap } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
 
 import * as SocketsActions from './socket.actions';
+import { ConnectionService } from '../connection.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -13,18 +15,29 @@ export class SocketsEffects {
   loadSockets$ = createEffect(() => {
     return this.actions$.pipe(
 
-      ofType(SocketsActions.loadSockets),
+      ofType(SocketsActions.getFiles),
+      map(() => this.connection.sendMessage({
+        service: 'ntfs',
+        payload: JSON.stringify({
+          id: '',
+          sequence: '',
+          command: 'getFiles',
+          commandparams: {
+            path: 'F:/my-webframework/AppSample/NTFSWebRoot',
+            searchPattern: '*',
+            sort: 'name'
+          }
+        })
+      })),
       concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
-          map(data => SocketsActions.loadSocketsSuccess({ data })),
-          catchError(error => of(SocketsActions.loadSocketsFailure({ error }))))
+
+        this.connection.messages.pipe(
+          ofType(SocketsActions.getFilesSuccess, SocketsActions.getFilesFailure)
+        )
       )
     );
   });
 
-
-
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions, private connection: ConnectionService) {}
 
 }

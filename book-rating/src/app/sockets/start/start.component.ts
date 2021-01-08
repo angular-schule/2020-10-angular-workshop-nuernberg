@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { getFiles } from '../store/socket.actions';
+import { selectFiles } from '../store/socket.selectors';
 
 @Component({
   selector: 'br-start',
   templateUrl: './start.component.html',
-  styleUrls: ['./start.component.scss']
+  styleUrls: ['./start.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StartComponent implements OnInit {
+export class StartComponent {
 
-  constructor() { }
+  files$ = this.store.pipe(select(selectFiles))
 
-  ngOnInit(): void {
+  constructor(private store: Store) { }
+
+  getFiles() {
+    this.store.dispatch(getFiles());
   }
 
 }

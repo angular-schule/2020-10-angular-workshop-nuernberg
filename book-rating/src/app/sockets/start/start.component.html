@@ -1,1 +1,9 @@
 <p>start works!</p>
+
+<button (click)="getFiles()" class="btn btn-primary">Get Files!</button>
+
+<ul>
+  <li *ngFor="let file of files$ | async">
+    {{ file.path }}/{{ file.name }} -- {{ file.size }} {{ file.unit }}
+  </li>
+</ul>

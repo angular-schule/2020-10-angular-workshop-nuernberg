@@ -1,15 +1,16 @@
 import { createAction, props } from '@ngrx/store';
+import { FileInfo } from './socket.reducer';
 
-export const loadSockets = createAction(
-  '[Sockets] Load Sockets'
+export const getFiles = createAction(
+  'getFiles'
 );
 
-export const loadSocketsSuccess = createAction(
-  '[Sockets] Load Sockets Success',
-  props<{ data: any }>()
+export const getFilesSuccess = createAction(
+  'getFilesSuccess',
+  props<{ payload: string }>()
 );
 
-export const loadSocketsFailure = createAction(
-  '[Sockets] Load Sockets Failure',
-  props<{ error: any }>()
+export const getFilesFailure = createAction(
+  'getFilesFailure',
+  props<{ error: string }>()
 );
