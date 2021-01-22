@@ -1,3 +1,5 @@
+<h1>{{ isbnFromStore$  | async }}</h1>
+
 <ng-container *ngIf="book$ | async as book; else loading">
 
   <h2>{{ book.title }}</h2>
@@ -7,7 +9,7 @@
     Details:
     {{ book.description }}
 
-    <br>{{test$ | async }}
+    <!-- <br>{{test$ | async }} -->
   </p>
 
   <button
