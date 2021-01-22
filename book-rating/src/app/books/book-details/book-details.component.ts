@@ -5,7 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { EMPTY, Observable, of } from 'rxjs';
 import { catchError, map, mergeMap, retry, share, shareReplay, startWith, switchMap } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
-import { selectSelectedBook, selectSelectedIsbn } from '../store/book.selectors';
+import { selectSelectedBook } from '../store/book.selectors';
 
 @Component({
   selector: 'br-book-details',
@@ -16,7 +16,6 @@ export class BookDetailsComponent implements OnInit {
 
   showDetails = false;
 
-  isbnFromStore$ = this.store.pipe(select(selectSelectedIsbn));
   book$ = this.store.pipe(select(selectSelectedBook));
 
   // book2$ = this.route.paramMap

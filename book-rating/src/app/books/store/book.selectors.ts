@@ -16,12 +16,9 @@ export const selectBooks = createSelector(
   state => state.books
 );
 
-export const selectSelectedIsbn = selectRouteParam('isbn');
-
 export const selectSelectedBook = createSelector(
-  selectBooks,
-  selectSelectedIsbn,
-  (books, isbn) => books.find(b => b.isbn === isbn)
+  selectBookState,
+  state => state.selectedBook
 );
 
 // another example:

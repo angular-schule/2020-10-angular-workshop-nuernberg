@@ -1,5 +1,3 @@
-<h1>{{ isbnFromStore$  | async }}</h1>
-
 <ng-container *ngIf="book$ | async as book; else loading">
 
   <h2>{{ book.title }}</h2>
