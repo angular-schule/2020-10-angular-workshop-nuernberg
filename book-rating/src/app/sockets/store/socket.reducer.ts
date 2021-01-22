@@ -1,6 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as SocketsActions from './socket.actions';
 
+// zentrales Modul das sozusagen den Status und die Daten der Oberfläche hält.
+// die nach außen gereichten Properties (logonInProgress) müssen über einen
+// Selector für die Oberfläche zugänglich gemacht werden.
+
 export const socketsFeatureKey = 'sockets';
 
 export interface FileInfo {

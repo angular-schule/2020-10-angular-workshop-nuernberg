@@ -1,6 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromSockets from './socket.reducer';
 
+// Über diese Selectoren greift die Oberfläche auf die Properties
+// im Store (State) zu.
+
 export const selectSocketsState = createFeatureSelector<fromSockets.State>(
   fromSockets.socketsFeatureKey
 );

@@ -31,6 +31,6 @@ import { environment } from '../environments/environment';
     // AppRoutingEndModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent],    // mh: das ist die Start-Component
 })
 export class AppModule { }
